@@ -1,0 +1,6 @@
+%p
+	this is the problem view
+
+%row
+	.col-sm-3#sidebar
+	.col-sm-9#content

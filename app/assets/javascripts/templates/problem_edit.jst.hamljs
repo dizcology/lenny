@@ -1,0 +1,30 @@
+%row
+  .col-xs-12
+    %h4
+      Problem
+      = 123
+      = statement
+      = solution
+  
+      .btn-toolbar
+        %button.btn.btn-default#preview
+          Preview
+        %button.btn.btn-default#save
+          Save
+        %button.btn.btn-danger#cancel
+          Cancel
+
+%row#problem-edit
+  .col-xs-6
+    %span.label.label-default
+      Statement
+
+    #preview-statement{'data-type': 'statement'}
+      = statement
+          
+  .col-xs-6
+    %span.label.label-default
+      Solution
+    
+    #preview-solution
+      = solution

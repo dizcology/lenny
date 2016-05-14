@@ -1,0 +1,2 @@
+%a{ data-toggle: "tab", id: "#{name}-tab" }
+  = name

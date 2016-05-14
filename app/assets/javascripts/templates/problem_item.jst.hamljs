@@ -1,0 +1,5 @@
+%a{ data-toggle: "pill", rel: 'tooltip', data-placement: 'right', title: "#{name}" }
+    %p
+        Problem 123
+    %small
+        Solved 100/200 times
