@@ -3,7 +3,7 @@
     %h4
       Problem
       = 123
-      = statement
+      = content
       = solution
   
       .btn-toolbar
@@ -19,8 +19,7 @@
     %span.label.label-default
       Statement
 
-    #preview-statement{'data-type': 'statement'}
-      = statement
+    #editable-statement
           
   .col-xs-6
     %span.label.label-default

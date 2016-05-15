@@ -8,12 +8,12 @@ Lenny.ProblemsApp.ProblemsView = Marionette.LayoutView.extend
 		content: '#content'	
 
 	collection: new Backbone.Collection([
-			{statement: 'what is 1 + 1?', solution: '234'}
-			{statement: 'who is this?', solution: 'Herbie'}
+			{content: 'hi', solution: 'wo'}
+			{content: 'who is this?', solution: 'Herbie'}
 		])
 
 	baseModel: new Backbone.Model(
-			{statement: 'hi', solution: 'wo'}
+			{content: 'what is $1 + 1$?', solution: '234'}
 		)
 		
 
