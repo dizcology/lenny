@@ -1,5 +1,6 @@
-%a{ data-toggle: "pill", rel: 'tooltip', data-placement: 'right', title: "#{name}" }
+%a{ data-toggle: "pill", rel: 'tooltip', data-placement: 'right', title: "#{content}" }
     %p
         Problem 123
+        #{content}
     %small
         Solved 100/200 times

@@ -9,14 +9,13 @@ Lenny.ProblemsApp.ProblemsView = Marionette.LayoutView.extend
 
 	collection: new Backbone.Collection([
 			{content: 'hi', solution: 'wo'}
-			{content: 'who is this?', solution: 'Herbie'}
+			{content: 'who is this? <script type="math/tex"> \\displaystyle\\int \\sum_0^\\infty</script>', solution: 'Herbie'}
 		])
-
-	baseModel: new Backbone.Model(
-			{content: 'what is $1 + 1$?', solution: '234'}
-		)
 		
 
 	onBeforeShow: ->
 		@showChildView 'sidebar', new Lenny.ProblemsApp.ProblemListView {collection: @collection}
-		@showChildView 'content', new Lenny.ProblemsApp.ProblemEditView {model: @baseModel}
+
+	onChildviewProblemItemClicked: (childview) ->
+		console.log childview.model
+		@showChildView 'content', new Lenny.ProblemsApp.ProblemEditView {model: childview.model}

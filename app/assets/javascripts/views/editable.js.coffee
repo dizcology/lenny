@@ -3,6 +3,7 @@ Lenny.EditableView = Marionette.ItemView.extend
 	#className: 'nav nav-pills nav-stacked'
 	template: JST['templates/editable']
 
+	previewId: 'preview-selector'
 	editId: 'edit-selector'
 	ui:
 		'previewSelector': '#preview-selector'
@@ -12,7 +13,11 @@ Lenny.EditableView = Marionette.ItemView.extend
 		'click @ui.previewSelector': 'edit'
 		'blur @ui.editSelector': 'finishEdit'
 
-	edit: (ev)->
+	onRender: ->
+		@ui.previewSelector.html @model.attributes.content
+		@renderMathJax()
+
+	edit: (ev) ->
 		console.log 'trying to edit'
 		type = @options.options.type
 		wrapper = '<' + type + '></' + type + '>'
@@ -37,4 +42,12 @@ Lenny.EditableView = Marionette.ItemView.extend
 		console.log newContent
 		@model.set 'content': newContent
 		@ui.previewSelector.html newContent
-		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview-selector"])
+		@renderMathJax()
+
+	onShow: ->
+		@renderMathJax()
+
+	renderMathJax: ->
+		console.log 'queueing to render MathJax'
+		MathJax.Hub.Queue ["Typeset", MathJax.Hub, @previewId]
+
