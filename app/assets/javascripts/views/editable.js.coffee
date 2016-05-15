@@ -3,6 +3,7 @@ Lenny.EditableView = Marionette.ItemView.extend
 	#className: 'nav nav-pills nav-stacked'
 	template: JST['templates/editable']
 
+	editId: 'edit-selector'
 	ui:
 		'previewSelector': '#preview-selector'
 		'editSelector': '#edit-selector'
@@ -19,18 +20,21 @@ Lenny.EditableView = Marionette.ItemView.extend
 		@ui.previewSelector.html ''
 		$(wrapper)
 			.attr({
-				'id': 'edit-selector'
+				'id': @editId
 				'class': 'form-control'
 				'style': 'resize:none'
 				'rows': 10
 			})
 			.val(@model.attributes.content)
-			.appendTo(@ui.previewSelector)
-		$('#edit-selector').focus()
+			.insertAfter(@ui.previewSelector)
+		$('#' + @editId).focus()
 
 	finishEdit: ->
 		console.log 'finished editing statement'
 		# TODO: update model by ajax
-		newContent = $('#edit-selector').val()
+		newContent = $('#' + @editId).val()
+		$('#' + @editId).remove()
+		console.log newContent
 		@model.set 'content': newContent
 		@ui.previewSelector.html newContent
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "preview-selector"])
