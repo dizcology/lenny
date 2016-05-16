@@ -1,28 +1,36 @@
-Lenny.EditableView = Marionette.ItemView.extend
+Lenny.EditableView = Marionette.LayoutView.extend
 	#tagName: 'ul'
 	#className: 'nav nav-pills nav-stacked'
 	template: JST['templates/editable']
 
-	previewId: 'preview-selector'
+	previewId: 'preview-region'
 	editId: 'edit-selector'
 	ui:
-		'previewSelector': '#preview-selector'
+		'previewSelector': '#preview-region'
 		'editSelector': '#edit-selector'
 
 	events:
 		'click @ui.previewSelector': 'edit'
 		'blur @ui.editSelector': 'finishEdit'
 
-	onRender: ->
-		@ui.previewSelector.html @model.attributes.content
-		@renderMathJax()
+	regions:
+		previewRegion: '#preview-region'
+
+	initialize: (options) ->
+		@args = options.args
+
+	onBeforeShow: ->
+		@renderPreview()
+
+	renderPreview: ->
+		@showChildView 'previewRegion', new Lenny.MathJaxView model: @model, args: @args
 
 	edit: (ev) ->
 		console.log 'trying to edit'
-		type = @options.options.type
+		type = @args.type
 		wrapper = '<' + type + '></' + type + '>'
 
-		@ui.previewSelector.html ''
+		@previewRegion.empty()
 		$(wrapper)
 			.attr({
 				'id': @editId
@@ -41,13 +49,6 @@ Lenny.EditableView = Marionette.ItemView.extend
 		$('#' + @editId).remove()
 		console.log newContent
 		@model.set 'content': newContent
-		@ui.previewSelector.html newContent
-		@renderMathJax()
+		@renderPreview()
 
-	onShow: ->
-		@renderMathJax()
-
-	renderMathJax: ->
-		console.log 'queueing to render MathJax'
-		MathJax.Hub.Queue ["Typeset", MathJax.Hub, @previewId]
 

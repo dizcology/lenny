@@ -10,5 +10,9 @@ Lenny.ProblemsApp.ProblemEditView = Marionette.LayoutView.extend
 		type: 'textarea'
 		name: 'statement'
 
+	editableArgs:
+		type: 'textarea'
+		name: 'statement'
+
 	onBeforeShow: ->
-		@showChildView 'editableStatement', new Lenny.EditableView model: @model, options: @options
+		@showChildView 'editableStatement', new Lenny.EditableView model: @model, args: @editableArgs

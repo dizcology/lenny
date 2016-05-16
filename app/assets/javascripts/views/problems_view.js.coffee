@@ -9,7 +9,7 @@ Lenny.ProblemsApp.ProblemsView = Marionette.LayoutView.extend
 
 	collection: new Backbone.Collection([
 			{content: 'hi', solution: 'wo'}
-			{content: 'who is this? <script type="math/tex"> \\displaystyle\\int \\sum_0^\\infty</script>', solution: 'Herbie'}
+			{content: 'who is this? $\\displaystyle\\int\\sum_0^\\infty$ and some more text', solution: 'Herbie'}
 		])
 		
 
