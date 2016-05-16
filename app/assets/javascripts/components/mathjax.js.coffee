@@ -3,7 +3,23 @@ Lenny.MathJaxView = Marionette.ItemView.extend
 
 	initialize: (options)->
 		@args = options.args
+		@$el.attr('id', @args.name + '-mathjax-content')
+		#@listenTo(@model, 'change', @render)
+
+	onRender: ->
+		#console.log 'rendering'
+		@renderMathJax()
+
+	renderMathJax: ->
+		
+		_selector = '#' + @args.name + '-mathjax-content'
 		@model.set mathjaxContent: @contentToMathjax @model.attributes.content
+
+		@$el.hide()
+		@$el.html @model.attributes.mathjaxContent
+
+		MathJax.Hub.Queue ["Typeset", MathJax.Hub, @el]
+		MathJax.Hub.Queue () -> $(_selector).show()
 
 	contentToMathjax: (content) ->
 		result = ''
@@ -21,15 +37,4 @@ Lenny.MathJaxView = Marionette.ItemView.extend
 				result += c
 
 		result
-
-	onRender: ->
-		@$el.attr('id', @args.name + '-mathjax-content')
-		@$el.hide()
-		@$el.html @model.attributes.mathjaxContent
-		@renderMathJax()
-
-	renderMathJax: ->
-		_selector = '#' + @args.name + '-mathjax-content'
-		MathJax.Hub.Queue ["Typeset", MathJax.Hub, @el]
-		MathJax.Hub.Queue () -> $(_selector).show()
 

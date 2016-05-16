@@ -12,6 +12,7 @@ Lenny.EditableView = Marionette.LayoutView.extend
 	events:
 		'click @ui.previewSelector': 'edit'
 		'blur @ui.editSelector': 'finishEdit'
+		'keyup #edit-selector': 'editUpdated'
 
 	regions:
 		previewRegion: '#preview-region'
@@ -25,6 +26,11 @@ Lenny.EditableView = Marionette.LayoutView.extend
 	renderPreview: ->
 		@showChildView 'previewRegion', new Lenny.MathJaxView model: @model, args: @args
 
+	editUpdated: ->
+		newContent = $('#' + @editId).val()
+		@model.set 'content': newContent
+		@editPopover.currentView.renderMathJax()
+
 	edit: (ev) ->
 		console.log 'trying to edit'
 		type = @args.type
@@ -37,18 +43,30 @@ Lenny.EditableView = Marionette.LayoutView.extend
 				'class': 'form-control'
 				'style': 'resize:none'
 				'rows': 10
+				'data-toggle': 'popover'
+				'data-placement': 'top'
+				'title': 'Preview'
+				'data-content': '<div id="edit-popover"></div>'
+				'data-trigger': 'focus'
 			})
 			.val(@model.attributes.content)
 			.insertAfter(@ui.previewSelector)
+		$('#' + @editId).popover
+			html:true
 		$('#' + @editId).focus()
+		
+		@addRegion('editPopover', '#edit-popover')
+
+		popoverArgs =
+			name: 'popover'
+
+		@showChildView 'editPopover', new Lenny.MathJaxView model: @model, args: popoverArgs
 
 	finishEdit: ->
 		console.log 'finished editing statement'
 		# TODO: update model by ajax
-		newContent = $('#' + @editId).val()
+		@editUpdated()
 		$('#' + @editId).remove()
-		console.log newContent
-		@model.set 'content': newContent
 		@renderPreview()
 
 

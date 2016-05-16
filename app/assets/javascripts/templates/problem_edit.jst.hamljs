@@ -3,8 +3,6 @@
     %h4
       Problem
       = 123
-      = content
-      = solution
   
       .btn-toolbar
         %button.btn.btn-default#preview

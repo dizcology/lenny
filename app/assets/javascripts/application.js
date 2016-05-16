@@ -25,6 +25,7 @@
 //= require_tree ./apps
 //= require_tree ./models
 //= require_tree ./collections
+//= require_tree ./components
 //= require_tree ./views
 //= require_tree ./controllers
 //= require_tree ./routers

@@ -6,10 +6,6 @@ Lenny.ProblemsApp.ProblemEditView = Marionette.LayoutView.extend
 	regions:
 		editableStatement: '#editable-statement'
 
-	options:
-		type: 'textarea'
-		name: 'statement'
-
 	editableArgs:
 		type: 'textarea'
 		name: 'statement'
