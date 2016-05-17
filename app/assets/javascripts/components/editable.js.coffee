@@ -26,7 +26,8 @@ Lenny.EditableView = Marionette.LayoutView.extend
 	renderPreview: ->
 		@showChildView 'previewRegion', new Lenny.MathJaxView model: @model, args: @args
 
-	editUpdated: ->
+	editUpdated: (ev) ->
+		#console.log ev
 		newContent = $('#' + @editId).val()
 		@model.set 'content': newContent
 		@editPopover.currentView.renderMathJax()
