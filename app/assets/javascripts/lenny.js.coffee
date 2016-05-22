@@ -5,14 +5,22 @@ Lenny.module 'Collections'
 Lenny.module 'Views'
 Lenny.module 'Modules'
 
+Lenny.regionName = (key) ->
+	key + 'Region'
+
+Lenny.regionSelector = (key) ->
+	'#' + key + '-region'
+
 Lenny.addInitializer ->
-	Lenny.addRegions
-		headerRegion: '#header-region'
-		navbarRegion: '#navbar-region'
-		homeRegion: '#home-region'
-		problemsRegion: '#problems-region'
-		practiceRegion: '#practice-region'
-		footerRegion: '#footer-region'
+	regionKeys = ['header', 'navbar', 'home', 'problems', 'practice', 'footer']
+
+	hash = {}
+	for key in regionKeys
+		rName = Lenny.regionName key
+		rSelector = Lenny.regionSelector key
+		hash[rName] = rSelector
+
+	Lenny.addRegions hash
 
 	Lenny.controller = new Lenny.Controller
 	Lenny.router = new Lenny.Router(controller: Lenny.controller)

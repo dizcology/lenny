@@ -12,4 +12,4 @@ Lenny.Views.ProblemItemView = Marionette.ItemView.extend
 		'click @ui.problemItem': 'problem:item:clicked'
 
 	onProblemItemClicked: ->
-		console.log 'clicked!!' + @model.attributes.content
+		#console.log 'clicked!!' + @model.attributes.content

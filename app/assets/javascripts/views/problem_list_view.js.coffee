@@ -6,4 +6,4 @@ Lenny.Views.ProblemListView = Marionette.CompositeView.extend
 	childView: Lenny.Views.ProblemItemView
 
 	onChildviewProblemItemClicked: (childview) ->
-		console.log childview.model.attributes.content
+		#console.log childview.model.attributes.content

@@ -15,5 +15,5 @@ Lenny.Views.ProblemsView = Marionette.LayoutView.extend
 		@showChildView 'sidebar', new Lenny.Views.ProblemListView {collection: @collection}
 
 	onChildviewProblemItemClicked: (childview) ->
-		console.log childview.model
+		#console.log childview.model
 		@showChildView 'content', new Lenny.Views.ProblemEditView {model: childview.model}
