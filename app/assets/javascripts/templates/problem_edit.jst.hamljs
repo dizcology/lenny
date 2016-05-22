@@ -23,5 +23,5 @@
     %span.label.label-default
       Solution
     
-    #preview-solution
-      = solution
+    #preview-solutions
+      = solutions

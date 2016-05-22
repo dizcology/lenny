@@ -1,5 +1,6 @@
 Lenny.Router = Marionette.AppRouter.extend
 	appRoutes:
-		'': 'index'
-		'problems': 'problems'
-		'practice': 'practice'
+		'': 'home'
+		':tab': 'handleTab'
+		#'problems': 'problems'
+		#'practice': 'practice'

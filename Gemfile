@@ -41,6 +41,8 @@ gem 'execjs'
 
 gem 'responders'
 
+gem "paranoia"
+
 #gem 'haml-rails'
 
 # Use ActiveModel has_secure_password

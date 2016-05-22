@@ -9,7 +9,9 @@ Lenny.addInitializer ->
 	Lenny.addRegions
 		headerRegion: '#header-region'
 		navbarRegion: '#navbar-region'
-		moduleRegion: '#module-region'
+		homeRegion: '#home-region'
+		problemsRegion: '#problems-region'
+		practiceRegion: '#practice-region'
 		footerRegion: '#footer-region'
 
 	Lenny.controller = new Lenny.Controller

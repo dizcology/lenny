@@ -1,4 +1,4 @@
-Lenny.ProblemsApp.ProblemEditView = Marionette.LayoutView.extend
+Lenny.Views.ProblemEditView = Marionette.LayoutView.extend
 	#tagName: 'ul'
 	#className: 'nav nav-pills nav-stacked'
 	template: JST['templates/problem_edit']
@@ -11,4 +11,5 @@ Lenny.ProblemsApp.ProblemEditView = Marionette.LayoutView.extend
 		name: 'statement'
 
 	onBeforeShow: ->
+		#debugger
 		@showChildView 'editableStatement', new Lenny.EditableView model: @model, args: @editableArgs

@@ -1,4 +1,4 @@
-Lenny.ProblemsApp.ProblemsView = Marionette.LayoutView.extend
+Lenny.Views.ProblemsView = Marionette.LayoutView.extend
 	#tagName: 'ul'
 	#className: 'nav nav-tabs'
 	template: JST['templates/problems']
@@ -7,15 +7,13 @@ Lenny.ProblemsApp.ProblemsView = Marionette.LayoutView.extend
 		sidebar: '#sidebar'
 		content: '#content'	
 
-	collection: new Backbone.Collection([
-			{content: 'hi', solution: 'wo'}
-			{content: 'who is this? $\\displaystyle\\int\\sum_0^\\infty$ and some more text', solution: 'Herbie'}
-		])
-		
+	initialize: ->
+		@collection = new Lenny.Collections.Problem
+		@collection.fetch()	
 
 	onBeforeShow: ->
-		@showChildView 'sidebar', new Lenny.ProblemsApp.ProblemListView {collection: @collection}
+		@showChildView 'sidebar', new Lenny.Views.ProblemListView {collection: @collection}
 
 	onChildviewProblemItemClicked: (childview) ->
 		console.log childview.model
-		@showChildView 'content', new Lenny.ProblemsApp.ProblemEditView {model: childview.model}
+		@showChildView 'content', new Lenny.Views.ProblemEditView {model: childview.model}

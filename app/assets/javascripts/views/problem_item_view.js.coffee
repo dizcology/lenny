@@ -1,4 +1,4 @@
-Lenny.ProblemsApp.ProblemItemView = Marionette.ItemView.extend
+Lenny.Views.ProblemItemView = Marionette.ItemView.extend
 	tagName: 'li'
 	template: JST['templates/problem_item']
 

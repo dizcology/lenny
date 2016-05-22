@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+ps = {
+	"what is $1+1$?\nAnswer: []" => ['2', 'add them up'],
+	"which is good?\n[r:apple]\n[r:orange]\n[r:steak]" => ['grapes', 'sure']
+}
+
+if Problem.count == 0
+	ps.each do |content, solutions|
+		p = Problem.new
+		p.content = content
+		p.solutions = solutions
+		p.save!
+	end
+end
+

@@ -45,6 +45,7 @@ Lenny.MathJaxView = Marionette.ItemView.extend
 			else if c == ']'
 				inputFlag = false
 
+				# TODO: isolate this to a parseContent function
 				if inputContent.slice(0, 2) == 'c:'
 					result += @checkboxTemplate inputContent.slice(2)
 				else if inputContent.slice(0, 2) == 'r:'
@@ -59,8 +60,8 @@ Lenny.MathJaxView = Marionette.ItemView.extend
 
 			else
 				result += c
-
-		result.replace /(?:\r\n|\r|\n)/g, '<br />'
+		
+		result = result.replace /(?:\r\n|\r|\n)/g, '<br />'
 
 	mathTemplate: (content) ->
 		'<script type="math/tex">' + content + '</script>'
@@ -69,7 +70,8 @@ Lenny.MathJaxView = Marionette.ItemView.extend
 		'<input type="checkbox">' + content
 
 	radiobuttonTemplate: (content) ->
-		'<input type="radio">' + content
+		# TODO: allow multiple groups
+		'<input type="radio" name="group1">' + content
 
 	inputTemplate: (content) ->
 		'<input value="' + content + '" size=' + content.length.toString() + '>'
