@@ -12,10 +12,12 @@ ps = {
 }
 
 if Problem.count == 0
-	ps.each do |content, solutions|
+	ps.each do |content, solution_contents|
 		p = Problem.new
 		p.content = content
-		p.solutions = solutions
+		p.solutions = solution_contents.map do |sc|
+			{'content' => sc}
+		end
 		p.save!
 	end
 end

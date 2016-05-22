@@ -4,12 +4,14 @@ Lenny.Models.Problem = Backbone.Model.extend
         solutions: []
 
     initialize: ->
-    	#this.solutions = new Lenny.Collections.Solution null, problem: @
     	#debugger
-    	@
+    	this.solutions = new Lenny.Collections.Solution this.attributes.solutions, problem: @
+    	console.log 'initialized'
+    	#debugger
 
     parse: (response, options) ->
-    	console.log response
+    	console.log 'response received for problem'
+    	#debugger
     	response
 
     toJSON: ->

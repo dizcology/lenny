@@ -1,8 +1,9 @@
 Lenny.Views.SolutionsView = Marionette.CompositeView.extend
-	tagName: 'ul'
+	tagName: 'div'
 	#className: 'nav nav-tabs'
 	template: JST['templates/solutions']
 
+	childView: Lenny.Views.SolutionEditView
 	#initialize: ->
 	#	@collection = new Lenny.Collections.Problem
 	#	@collection.fetch()	

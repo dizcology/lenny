@@ -14,4 +14,4 @@ Lenny.Views.ProblemEditView = Marionette.LayoutView.extend
 	onBeforeShow: ->
 		#debugger
 		@showChildView 'editableStatement', new Lenny.EditableView model: @model, args: @editableArgs
-		@showChildView 'previewSolutions', new Lenny.Views.SolutionsView model: @model
+		@showChildView 'previewSolutions', new Lenny.Views.SolutionsView collection: @model.solutions
