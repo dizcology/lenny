@@ -14,13 +14,18 @@
 
 %row#problem-edit
   .col-xs-6
-    %span.label.label-default
-      Statement
+    %h4
+      %span.label.label-default
+        Statement
 
     #editable-statement
           
   .col-xs-6
-    %span.label.label-default
-      Solution
-    
+    %h4
+      %span.label.label-default
+        Solutions
+      %div.btn-group
+        %button.btn.btn-success.btn-xs#add-solution
+          %span.glyphicon.glyphicon-plus
+
     #preview-solutions

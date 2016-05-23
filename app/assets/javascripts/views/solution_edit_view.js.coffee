@@ -1,4 +1,4 @@
 Lenny.Views.SolutionEditView = Marionette.ItemView.extend
 	tagName: 'div'
-	className: 'well'
+	className: 'well well-small'
 	template: JST['templates/solution_edit']
