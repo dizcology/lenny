@@ -1,8 +1,7 @@
 %row
   .col-xs-12
     %h4
-      Problem
-      = 123
+      Problem #{id}
   
       .btn-toolbar
         %button.btn.btn-default#preview
