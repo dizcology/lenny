@@ -1,3 +1,5 @@
+#Backbone.emulateJSON = true
+
 @Lenny = new Marionette.Application
 
 Lenny.module 'Models'

@@ -4,7 +4,10 @@ Lenny.Models.Problem = Backbone.Model.extend
         content: ''
         solutions: []
 
-    shownId: () ->
+    urlRoot: ->
+        '/problems/'
+        
+    shownId: ->
         if @get('id')
             @get('id')
         else
@@ -20,5 +23,3 @@ Lenny.Models.Problem = Backbone.Model.extend
     	#console.log 'response received for problem'
     	#debugger
     	response
-
-    toJSON: ->

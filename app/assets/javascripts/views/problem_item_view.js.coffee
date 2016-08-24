@@ -11,6 +11,8 @@ Lenny.Views.ProblemItemView = Marionette.LayoutView.extend
 		#@model.tooltip = "Preview:<div id='" + @model.dataId + "'></div>"
 		#debugger
 		#@addRegion('tooltipView', '#' + @tooltipSelector)
+		@url = 'problems/' + @model.id
+		@
 
 	render: ->
 		@$el.html @template @model
@@ -28,7 +30,7 @@ Lenny.Views.ProblemItemView = Marionette.LayoutView.extend
 
 	ui:
 		'problemItem': 'a'
-		'problemId': 'p'
+		'problemId': '#problemId'
 
 	triggers:
 		'click @ui.problemItem': 'problem:item:clicked'

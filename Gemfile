@@ -43,6 +43,8 @@ gem 'responders'
 
 gem "paranoia"
 
+gem 'protected_attributes'
+
 #gem 'haml-rails'
 
 # Use ActiveModel has_secure_password

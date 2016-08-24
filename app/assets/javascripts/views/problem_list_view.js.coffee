@@ -8,5 +8,14 @@ Lenny.Views.ProblemListView = Marionette.CompositeView.extend
 	#buildChildView: (child, ChildViewClass, childViewOptions) ->
 	#	new ChildViewClass {model: child}
 
+	ui:
+		'createButton': '#create'
+
+	triggers:
+		'click @ui.createButton': 'problem:create:clicked'
+
+	onProblemCreateClicked: ->
+		#console.log 'clicked!!'
+
 	onChildviewProblemItemClicked: (childview) ->
 		#console.log childview.model.attributes.content

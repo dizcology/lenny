@@ -1,5 +1,6 @@
 %a
-    %p{ data-toggle: "pill", rel: 'tooltip', data-placement: 'right', data-html: 'true', title: "Problem #{id} preview: <div id='#{dataId}'></div>" }
-        Problem #{id}
-    %small
-        Solved 100/200 times
+    %span#problemId{ data-toggle: "pill", rel: 'tooltip', data-placement: 'right', data-html: 'true', title: "Problem #{shownId()} preview: <div id='#{dataId}'></div>" }
+        %span
+        	Problem #{shownId()}  
+        	%span.glyphicon.glyphicon-stats
+    

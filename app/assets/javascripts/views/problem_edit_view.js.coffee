@@ -11,6 +11,20 @@ Lenny.Views.ProblemEditView = Marionette.LayoutView.extend
 		type: 'textarea'
 		name: 'statement'
 
+	ui:
+		'saveButton': '#save'
+
+	triggers:
+		'click @ui.saveButton': 'problem:save:clicked'
+
+	onProblemSaveClicked: ->
+		@model.save null,
+			success: (model, response) ->
+	          console.log 'success!'
+	          #debugger
+	        error: (model, xhr, options) ->
+	          console.log 'error!'
+
 	render: ->
 		@$el.html @template @model
 
